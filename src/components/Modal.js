@@ -20,7 +20,7 @@ const Modal = (props) => {
                     <div className="center">
                         <h1>Your Order</h1>
 
-
+ <button onClick={props.handleClose}>Close</button>
                     </div>
 
                 </section>
