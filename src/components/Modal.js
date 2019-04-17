@@ -37,7 +37,6 @@ class Modal extends React.Component {
                             {i}
                             <button onClick={this.props.handleClose}>Close</button>
                         </div>
-
                     </section>
                 </div>
             </main>
@@ -45,3 +44,4 @@ class Modal extends React.Component {
     }
 }
 export default Modal;
+
