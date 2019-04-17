@@ -15,18 +15,13 @@ export default class Form extends Component {
                 index={index}
                 handleInc={this.props.handleInc}
                 handleDec={this.props.handleDec} />
-
         )
 
         return (<React.Fragment>
             <div className="container mt-2">
                 <form action="" method="get" onSubmit={this.handleSubmit}>
-
                     {item}
-
-
                 </form>
-
             </div>
         </React.Fragment>
 

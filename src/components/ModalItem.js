@@ -1,8 +1,6 @@
 import React from 'react'
 
-
 export default function ModalItem(props) {
-
     return (
         <React.Fragment>
             <div className="modal-item">
@@ -17,7 +15,6 @@ export default function ModalItem(props) {
             <div className="modal-item">
                 <div> ₹ {props.quantity * props.price}</div>
             </div>
-
         </React.Fragment>
     )
 }
