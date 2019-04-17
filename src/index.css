@@ -44,7 +44,7 @@ button {
     color: #2F2366;
     font-family: 'Inconsolata', monospace;
   }
-  .price
+  p
   {
     margin:0;
     color: #2F2366;
@@ -126,3 +126,13 @@ button {
   .display-none {
     display: none;
   }
+.modal-container{
+  display:grid;
+  width:50%;
+  margin:auto;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 5px;
+  text-align: center;
+}
+.modal-item{
+}

@@ -1,31 +1,47 @@
 import React from 'react'
 import ModalItem from './ModalItem';
-const Modal = (props) => {
-    console.log(props.menu)
-    const showHideClassName = props.show ? "modal display-block" : "modal display-none";
+class Modal extends React.Component {
+    render() {
+        console.log(this.props.menu);
+        const showHideClassName = this.props.show ?
+            "modal display-block" : "modal display-none";
+        const i = this.props.menu.map((item, index) => {
+            return item.quantity > 0 ?
+                (<ModalItem
+                    quantity={item.quantity}
+                    price={item.price}
+                    dish={item.dish}
+                    key={index}
+                />) : null
+        }
+        )
+        return (
+            <main>
 
-    /*const i = props.menu.map((item) =>
-        <ModalItem
-            quantity={item.quantity}
-            price={item.price}
-            dish={item.dish}
-        />
-
-    )*/
-    return (
-        <main>
-
-            <div className={showHideClassName}>
-                <section className="modal-main">
-                    <div className="center">
+                <div className={showHideClassName}>
+                    <section className="modal-main">
                         <h1>Your Order</h1>
+                        <div className="modal-container">
+                            <div className="modal-item">
+                                <div>Dish Name</div>
+                            </div>
+                            <div className="modal-item">
+                                <div>Quantity</div>
+                            </div>
+                            <div className="modal-item">
+                                <div>Price ₹ </div>
+                            </div>
+                            <div className="modal-item">
+                                <div>Total cost ₹ </div>
+                            </div>
+                            {i}
+                            <button onClick={this.props.handleClose}>Close</button>
+                        </div>
 
-
-                    </div>
-
-                </section>
-            </div>
-        </main>
-    );
-};
+                    </section>
+                </div>
+            </main>
+        );
+    }
+}
 export default Modal;

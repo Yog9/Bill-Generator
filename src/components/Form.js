@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import MenuItem from './MenuItem';
-import Modal from './Modal';
+
 export default class Form extends Component {
     handleSubmit = (e) => {
         e.preventDefault()
@@ -14,9 +14,7 @@ export default class Form extends Component {
                 price={i.price}
                 index={index}
                 handleInc={this.props.handleInc}
-                handleDec={this.props.handleDec}
-                show={this.props.show}
-                handleClose={this.props.handleClose} />
+                handleDec={this.props.handleDec} />
 
         )
 
@@ -28,15 +26,8 @@ export default class Form extends Component {
 
 
                 </form>
+
             </div>
-            <Modal
-                show={this.props.show}
-                handleClose={this.props.handleClose}
-                dish={this.props.dish}
-                quantity={this.props.quantity}
-                price={this.props.price}
-                index={this.props.index}
-            />
         </React.Fragment>
 
         )

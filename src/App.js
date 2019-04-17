@@ -31,12 +31,13 @@ class App extends Component {
 
   showModal = () => {
     this.setState({ show: true })
+    //console.log(`Clicked show modal state is ${this.state.show}`)
   };
 
   hideModal = () => {
     this.setState({ show: false })
-    console.log(`Clicked hide modal state is ${this.state.show}`)
-  };
+    // console.log(`Clicked hide modal state is ${this.state.show}`)
+  }
   render() {
     return (
       <div className="App">
@@ -44,16 +45,15 @@ class App extends Component {
         <Form handleInc={this.handleInc}
           handleDec={this.handleDec}
           menu={this.state.menu}
-          show={this.state.show}
-          handleClose={this.hideModal}
         />
 
-        <button id="" onClick={this.showModal}>CHECKOUT</button>
+
         <Modal
-          show={this.props.show}
-          handleClose={this.props.handleClose}
+          show={this.state.show}
+          handleClose={this.hideModal}
           menu={this.state.menu}
         />
+        <button id="" onClick={this.showModal}>CHECKOUT</button>
       </div>
     )
   }
