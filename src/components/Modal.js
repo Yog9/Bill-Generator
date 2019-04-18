@@ -2,10 +2,11 @@ import React from 'react'
 import ModalItem from './ModalItem';
 class Modal extends React.Component {
     render() {
-        console.log(this.props.menu);
+        const {bill} = this.props;
         const showHideClassName = this.props.show ?
             "modal display-block" : "modal display-none";
-        const i = this.props.menu.map((item, index) => {
+        const bill_items = Object.values(bill)
+        const i = bill_items.map((item, index) => {
             return item.quantity > 0 ?
                 (<ModalItem
                     quantity={item.quantity}
@@ -44,4 +45,3 @@ class Modal extends React.Component {
     }
 }
 export default Modal;
-
