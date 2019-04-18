@@ -1,51 +1,53 @@
 import React from 'react'
 import ModalItem from './ModalItem';
-function Modal(props) {
-    console.log(props)
-    const showHideClassName = props.show ?
-        "modal display-block" : "modal display-none";
-    const redirectToTarget = () => {
-        props.history.push(`/order`);
+import { withRouter } from 'react-router-dom';
+
+class Modal extends React.Component {
+    redirectToTarget = () => {
+        this.props.history.push(`/order`);
         console.log(`Clicked confirm`);
     }
-    const i = props.menu.map((item, index) =>
+    render() {
+        const showHideClassName = this.props.show ?
+            "modal display-block" : "modal display-none";
 
-        <ModalItem
-            quantity={item.quantity}
-            price={item.price}
-            dish={item.dish}
-            key={index}
-            handleClose={props.handleClose}
-        />
-    )
+        const i = this.props.menu.map((item, index) =>
 
-    return (
-        <div>
-            <div className={showHideClassName}>
-                <section className="modal-main">
-                    <h1>Your Order</h1>
-                    <div className="modal-container">
-                        <div className="modal-item">
-                            <div>Dish Name</div>
+            <ModalItem
+                quantity={item.quantity}
+                price={item.price}
+                dish={item.dish}
+                key={index}
+                handleClose={this.props.handleClose}
+            />
+        )
+        return (
+            <div>
+                <div className={showHideClassName}>
+                    <section className="modal-main">
+                        <h1>Your Order</h1>
+                        <div className="modal-container">
+                            <div className="modal-item">
+                                <div>Dish Name</div>
+                            </div>
+                            <div className="modal-item">
+                                <div>Quantity</div>
+                            </div>
+                            <div className="modal-item">
+                                <div>Price ₹ </div>
+                            </div>
+                            <div className="modal-item">
+                                <div>Total cost ₹ </div>
+                            </div>
+                            {i}
+                            <button onClick={this.props.handleClose} >Close</button>
+                            <button onClick={this.redirectToTarget} > Confirm </button>
                         </div>
-                        <div className="modal-item">
-                            <div>Quantity</div>
-                        </div>
-                        <div className="modal-item">
-                            <div>Price ₹ </div>
-                        </div>
-                        <div className="modal-item">
-                            <div>Total cost ₹ </div>
-                        </div>
-                        {i}
-                        <button onClick={props.handleClose} >Close</button>
-                        <button onClick={redirectToTarget} > Confirm </button>
-                    </div>
-                </section>
+                    </section>
+                </div>
             </div>
-        </div>
-    );
+        );
+    }
 }
-
-export default Modal;
+export default withRouter(Modal);
 

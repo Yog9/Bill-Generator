@@ -13,21 +13,38 @@ class App extends Component {
       { id: 3, quantity: 0, dish: "Samosa", price: 15 },
       { id: 4, quantity: 0, dish: "Masala Papad", price: 30 },
     ],
-    show: false
+    show: false,
+    bill: []
   }
 
   handleInc = (index) => {
+
+    this.state.bill[index] = { ... this.state.menu[index] }
+    this.state.bill[index].quantity += 1;
+    this.state.menu[index].quantity += 1;
     this.setState({
-      quantity: this.state.menu[index].quantity += 1
+      bill: this.state.bill,
+      menu: this.state.menu
     })
+    console.log(this.state.bill);
   }
 
   handleDec = (index) => {
-    if (this.state.menu[index].quantity > 0) {
-      this.setState({
-        quantity: this.state.menu[index].quantity += - 1,
-      })
+    if (this.state.bill[index].quantity > 1) {
+      this.state.bill[index].quantity -= 1;
+      this.state.menu[index].quantity -= 1;
+      //console.log(this.state.bill);
     }
+    else if (this.state.bill[index].quantity == 1) {
+      delete this.state.bill[index];
+      this.state.bill = [];
+      this.state.menu[index].quantity -= 1;
+    }
+    this.setState({
+      menu: this.state.menu,
+      bill: this.state.bill
+    })
+    console.log(this.state.bill);
   }
 
   showModal = () => {
@@ -39,13 +56,14 @@ class App extends Component {
   }
 
   render() {
-    const menu_filter = this.state.menu.filter(item => item.quantity > 0)
-    const disableButton = menu_filter.length > 0 ? false : true;
+    //const menu_filter = this.state.menu.filter(item => item.quantity > 0)
+    const disableButton = this.state.bill.length > 0 ? false : true;
     return (
       <div className="App">
         <Router>
           <div>
             <Nav />
+
             <Switch>
               <Route exact path="/" render=
                 {() =>
@@ -57,12 +75,12 @@ class App extends Component {
                     <Modal
                       show={this.state.show}
                       handleClose={this.hideModal}
-                      menu={menu_filter}
+                      menu={this.state.bill}
                     />
                     <button onClick={this.showModal} disabled={disableButton}>CHECKOUT</button>
                   </React.Fragment>
                 } />
-              <Route path="/order" render={() => <Order menu={menu_filter} />} />
+              <Route path="/order" render={() => <Order menu={this.state.bill} />} />
             </Switch>
           </div>
         </Router>

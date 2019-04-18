@@ -5,7 +5,7 @@ export default function Nav() {
         <div>
             <ul className="navbar">
                 <li><NavLink className="" to="/">Home</NavLink></li>
-                <li><NavLink className="" to="/order">Order</NavLink></li>
+
             </ul>
         </div>
     )
