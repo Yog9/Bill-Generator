@@ -30,21 +30,22 @@ class App extends Component {
   }
 
   handleDec = (index) => {
-    if (this.state.bill[index].quantity > 1) {
-      this.state.bill[index].quantity -= 1;
-      this.state.menu[index].quantity -= 1;
-      //console.log(this.state.bill);
+    if (this.state.bill[index]) {
+      if (this.state.bill[index].quantity > 1) {
+        this.state.bill[index].quantity -= 1;
+        this.state.menu[index].quantity -= 1;
+        //console.log(this.state.bill);
+      }
+      else if (this.state.bill[index].quantity == 1) {
+        delete this.state.bill[index];
+        this.state.menu[index].quantity -= 1;
+      }
+      this.setState({
+        menu: this.state.menu,
+        bill: this.state.bill
+      })
+      console.log(this.state.bill);
     }
-    else if (this.state.bill[index].quantity == 1) {
-      delete this.state.bill[index];
-      this.state.bill = [];
-      this.state.menu[index].quantity -= 1;
-    }
-    this.setState({
-      menu: this.state.menu,
-      bill: this.state.bill
-    })
-    console.log(this.state.bill);
   }
 
   showModal = () => {
