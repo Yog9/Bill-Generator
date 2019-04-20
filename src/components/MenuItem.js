@@ -7,12 +7,12 @@ export default class MenuItem extends Component {
       <React.Fragment>
         <div className="item">
           <div className="dish_details">
-            <span className="dish-name"> {this.props.dish}</span>
-            <p className="price">₹ {this.props.price}</p>
+            <span className="dish-name" name="dish"> {this.props.dish}</span>
+            <p className="price" name="price">₹ {this.props.price}</p>
           </div>
           <div className="counter">
             <button className="counter-action decrement" onClick={() => this.props.handleDec(this.props.index)}> - </button>
-            <span className="quantity">{this.props.quantity}</span>
+            <span className="quantity" name="quantity">{this.props.quantity}</span>
             <button className="counter-action increment" onClick={() => this.props.handleInc(this.props.index)}> + </button>
           </div>
         </div>

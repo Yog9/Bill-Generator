@@ -100,6 +100,7 @@ class App extends Component {
                       show={this.state.show}
                       handleClose={this.hideModal}
                       menu={this.state.bill}
+                      addPricing={this.addPricing}
                     />
                     <button onClick={this.showModal}>CHECKOUT</button>
                   </React.Fragment>

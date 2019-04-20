@@ -3,11 +3,19 @@ import ModalItem from './ModalItem';
 import { withRouter } from 'react-router-dom';
 
 class Modal extends React.Component {
+
     redirectToTarget = () => {
         this.props.history.push(`/order`);
         console.log(`Clicked confirm`);
     }
+    handleConfirm = () => {
+        this.props.addPricing();
+        this.redirectToTarget();
+    }
+
     render() {
+
+        console.log(this.props)
         const showHideClassName = this.props.show ?
             "modal display-block" : "modal display-none";
 
@@ -42,7 +50,7 @@ class Modal extends React.Component {
                             </div>
                             {i}
                             <button onClick={this.props.handleClose}>Close</button>
-                            <button onClick={this.redirectToTarget} > Confirm </button>
+                            <button onClick={this.handleConfirm} > Confirm </button>
                         </div>
                     </section>
                 </div>

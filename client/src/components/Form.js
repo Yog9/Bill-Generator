@@ -3,6 +3,7 @@ import MenuItem from './MenuItem';
 
 export default class Form extends Component {
     handleSubmit = (e) => {
+        e.preventDefault();
     }
 
     render() {
