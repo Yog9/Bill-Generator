@@ -6,16 +6,21 @@ module.exports = (req, res, next) => {
     Menu.find({
     })
         .then(item => {
-            //console.log("body: ", req.body);
+            console.log("body: ", req.body);
             console.log("item returned", item);
             //console.log(`Item price ${item[0].price}`);
             let menu = [];
             for (let i = 0; i < item.length; i++) {
+              let dish_item_name = item[i].dish
+              let dish_item_quantity = parseInt(item[i].quantity)
+              if (req.body.dish === item[i].dish) {
+                dish_item_quantity = parseInt(req.body.quantity)
+              }
                 menu.push({
-                    dish: item[i].dish,
+                    dish: dish_item_name,
                     price: item[i].price,
-                    quantity: parseInt(item[i].quantity),
-                    total_cost: parseInt(parseInt(item[i].quantity) * item[i].price)
+                    quantity: dish_item_quantity,
+                    total_cost: parseInt(dish_item_quantity * item[i].price)
                 })
             }
             Pricing.insertMany(menu).then(menu => {
