@@ -29,14 +29,12 @@ class App extends Component {
       })
       .catch(err => console.log(err))
   }
-
   addPricing = () => {
     axios({
       method: 'post',
       url: 'http://localhost:5000/',
       data: {
-        "dish": this.state.bill[0].dish,
-        "quantity": this.state.bill[0].quantity
+        bill: this.state.bill
       },
       config: { headers: { 'Content-Type': 'application/json' } }
     })
@@ -113,7 +111,9 @@ class App extends Component {
                     <button onClick={this.showModal}>CHECKOUT</button>
                   </React.Fragment>
                 } />
-              <Route path="/order" render={() => <Order menu={this.state.bill} />} />
+              <Route path="/order" render={() => <Order
+                menu={this.state.bill}
+              />} />
             </Switch>
           </div>
         </Router>
