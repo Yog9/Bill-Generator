@@ -18,7 +18,7 @@ export default class Form extends Component {
         )
 
         return (<React.Fragment>
-            <form action="" method="get" onSubmit={this.handleSubmit}>
+            <form action="/order" method="post" onSubmit={this.handleSubmit}>
                 <div className="container mt-4">
                     {item}
                 </div>

@@ -31,7 +31,15 @@ class App extends Component {
   }
 
   addPricing = () => {
-    axios.post('http://localhost:5000/')
+    axios({
+      method: 'post',
+      url: 'http://localhost:5000/',
+      data: {
+        "dish": this.state.bill[0].dish,
+        "quantity": this.state.bill[0].quantity
+      },
+      config: { headers: { 'Content-Type': 'application/json' } }
+    })
       .then(res => {
         console.log(res.data)
       })
@@ -94,13 +102,13 @@ class App extends Component {
                     <Form handleInc={this.handleInc}
                       handleDec={this.handleDec}
                       menu={this.state.menu}
-                      bill
                     />
                     <Modal
                       show={this.state.show}
                       handleClose={this.hideModal}
                       menu={this.state.bill}
                       addPricing={this.addPricing}
+
                     />
                     <button onClick={this.showModal}>CHECKOUT</button>
                   </React.Fragment>
