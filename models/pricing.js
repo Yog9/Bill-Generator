@@ -21,5 +21,6 @@ let pricingSchema = new mongoose.Schema({
     },
 
 });
-let Pricing = mongoose.model('Pricing', pricingSchema);
+
+let Pricing = mongoose.model('Pricing', pricingSchema, 'pricings');
 module.exports = Pricing;
