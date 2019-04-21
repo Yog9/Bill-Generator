@@ -16,7 +16,7 @@ export default function ModalItem(props) {
                 <div> {props.price}</div>
             </div>
             <div className="modal-item">
-                <div> ₹ {cost}</div>
+                <div> {cost}</div>
             </div>
         </React.Fragment>
 
