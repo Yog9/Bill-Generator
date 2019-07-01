@@ -1,3 +1,8 @@
+# Food Cart
+[Demo of Food Cart Here](https://yog9.github.io/Interactive-video-player/)
+
+### Summary
+Food Cart is bill generate built from scratch using HTML5 Video API , CSS , Javascript along with some SVG for the video controls.
 # How to run the project locally
 
 ### Setup Backend of the project
