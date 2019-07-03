@@ -1,4 +1,3 @@
-let Menu = require('../models/menu');
 let Pricing = require('../models/pricing');
 module.exports = (req, res) => {
     Pricing.find({
