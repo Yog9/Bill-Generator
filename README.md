@@ -1,5 +1,4 @@
 # Bill Generator
-[Demo of Bill Generator Here](https://yog9.github.io/B/)
 
 ### Summary
 Bill Generator is a full-stack app made to generate bill for food-items that the user orders. It is built from scratch using React, React Router, Node js and a NoSQL database mongo DB.
